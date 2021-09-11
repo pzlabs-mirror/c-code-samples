@@ -42,7 +42,7 @@ add_executable(swap_vars_c swap_vars/swap_c.c)
 
 add_executable(lab1_1 lab1/lab1_1.c)
 add_executable(lab1_2 lab1/lab1_2.c)
-target_link_libraries(lab1_1 stdlib::math)
+target_link_libraries(lab1_1 PRIVATE stdlib::math)
 
 # Install every executable into default install prefix. To run installation step,
 # execute `cmake --build ${YOUR_BUILD_DIRECTORY} --target install`
