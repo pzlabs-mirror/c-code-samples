@@ -1,4 +1,4 @@
-# At least CMake v3.21 is required due to C17 support
+# At least CMake v3.21 is needed because of C17 support
 cmake_minimum_required(VERSION 3.21)
 
 project(c_examples
@@ -9,7 +9,6 @@ project(c_examples
 # Tell the compiler to run in C17 mode (ISO/IEC 9899:2018). Turn the compiler extensions off
 # (e.g. it forces -std=c17 instead of -std=gnu17 on gcc and clang)
 set(CMAKE_C_STANDARD 17)
-set(CMAKE_C_STANDARD_REQUIRED TRUE)
 set(CMAKE_C_EXTENSIONS FALSE)
 
 # Use folders for nice tree in Visual Studio and XCode
