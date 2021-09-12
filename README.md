@@ -10,7 +10,9 @@ A set of simple example projects in C.
   
 ## Building
 
-> :information_source: This instruction describes how to run CMake commands manually. You can simply open the `CMakeLists.txt` in any IDE that supports CMake, including, but not limited to, Qt Creator, Visual Studio, KDevelop, and CLion.
+> :information_source: This instruction describes how to run CMake commands manually. You can simply open
+the `CMakeLists.txt` in any IDE that supports CMake, including but not limited to Qt Creator,
+Visual Studio, KDevelop, and CLion.
 
 1. Install `git`, a `C` compiler, `CMake`, and a build system available as a `CMake` generator
 (e.g. `Ninja`, `GNU Make`, `MSBuild`, `NMake`, `Jom`).

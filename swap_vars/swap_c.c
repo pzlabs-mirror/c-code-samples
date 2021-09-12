@@ -8,14 +8,14 @@
 
 int main(void)
 {
-    int a = 3;
-    int b = 5;
+	int a = 3;
+	int b = 5;
 
-    printf("Before swap: a = %i; b = %i\n", a, b);
+	printf("Before swap: a = %i; b = %i\n", a, b);
 
-    a = a ^ b;
-    b = a ^ b;
-    a = a ^ b;
+	a = a ^ b;
+	b = a ^ b;
+	a = a ^ b;
 
-    printf("After swap : a = %i; b = %i\n", a, b);
+	printf("After swap : a = %i; b = %i\n", a, b);
 }

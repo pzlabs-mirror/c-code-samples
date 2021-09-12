@@ -10,24 +10,24 @@
 
 int main(void)
 {
-    double x;
-    double y;
+	double x;
+	double y;
 
-    printf("Enter x, y: ");
-    scanf("%lf %lf", &x, &y);
+	printf("Enter x, y: ");
+	scanf("%lf %lf", &x, &y);
 
-    if (x < 0.)
-    {
-        printf("Domain error: value of 'x' must be non-negative!\n");
-    }
-    else if (y < -1. || y > 1.)
-    {
-        printf("Domain error: value of 'y' must be in the [-1; 1] interval!\n");
-    }
-    else
-    {
-        const double a = 9.8;
-        const double z = sqrt(x) / (1. + pow(a, 3.2)) + pow(acos(y), 2.) / 2.;
-        printf("z = %lf\n", z);
-    }
+	if (x < 0.)
+	{
+		printf("Domain error: value of 'x' must be non-negative!\n");
+	}
+	else if (y < -1. || y > 1.)
+	{
+		printf("Domain error: value of 'y' must be in the [-1; 1] interval!\n");
+	}
+	else
+	{
+		const double a = 9.8;
+		const double z = sqrt(x) / (1. + pow(a, 3.2)) + pow(acos(y), 2.) / 2.;
+		printf("z = %lf\n", z);
+	}
 }
