@@ -13,6 +13,10 @@ set(CMAKE_C_EXTENSIONS FALSE)
 # Use folders for nice tree in Visual Studio and XCode
 set_property(GLOBAL PROPERTY USE_FOLDERS TRUE)
 
+# Generate compile_commands.json which is a format widely accepted by third-party tools
+# (code formatters, static analyzers, linters, project viewers, LSP servers, etc.)
+set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
 # Change the default install prefix to project_dir/install
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
 	AND "${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}"
