@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21) # At least CMake v3.21 is needed because of C17 support
 
-project(c_examples
-	DESCRIPTION "A set of simple example programs in C"
+project(c_code_samples
+	DESCRIPTION "A collection of code samples and examples for projects in C"
 	LANGUAGES C
 )
 

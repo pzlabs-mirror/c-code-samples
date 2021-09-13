@@ -1,12 +1,12 @@
-# C Examples
+# C Code Samples
 
-A set of simple example projects in C.
+A collection of simple code samples and examples for projects in C.
 
 ## Contents
   * `hello_world`
   * `swap`
   * `lab1`
-  * More examples coming soon.
+  * More samples coming soon.
   
 ## Building
 
@@ -18,8 +18,8 @@ Visual Studio, KDevelop, and CLion.
 (e.g. `Ninja`, `GNU Make`, `MSBuild`, `NMake`, `Jom`).
 2. Download this repository.
     ```bash
-    $ git clone https://gitlab.com/pzlabs/c-code-examples.git
-    $ cd c-code-examples
+    $ git clone https://gitlab.com/pzlabs/c-code-samples.git
+    $ cd c-code-samples
     ```
 3. Run the configuration step in a build directory. Change the name of this directory if needed.
 Multiple build directories are supported and encouraged in case of multiple configurations.
