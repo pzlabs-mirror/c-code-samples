@@ -50,22 +50,22 @@ target_link_libraries(flags INTERFACE
 
 # Define executables with the actual example code
 
-add_executable(hello_world hello_world/hello_world.c)
+add_executable(hello_world src/hello_world/hello_world.c)
 target_link_libraries(hello_world PRIVATE flags::flags)
 
-add_executable(swap_vars_a swap_vars/swap_a.c)
+add_executable(swap_vars_a src/swap_vars/swap_a.c)
 target_link_libraries(swap_vars_a PRIVATE flags::flags)
 
-add_executable(swap_vars_b swap_vars/swap_b.c)
+add_executable(swap_vars_b src/swap_vars/swap_b.c)
 target_link_libraries(swap_vars_b PRIVATE flags::flags)
 
-add_executable(swap_vars_c swap_vars/swap_c.c)
+add_executable(swap_vars_c src/swap_vars/swap_c.c)
 target_link_libraries(swap_vars_c PRIVATE flags::flags)
 
-add_executable(lab1_1 lab1/lab1_1.c)
+add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
-add_executable(lab1_2 lab1/lab1_2.c)
+add_executable(lab1_2 src/lab1/lab1_2.c)
 target_link_libraries(lab1_2 PRIVATE flags::flags)
 
 # Install every executable into default install prefix. To run installation step,
@@ -73,6 +73,9 @@ target_link_libraries(lab1_2 PRIVATE flags::flags)
 install(
 	TARGETS
 		hello_world
+		swap_vars_a
+		swap_vars_b
+		swap_vars_c
 		lab1_1
 		lab1_2
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
