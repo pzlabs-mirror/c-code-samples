@@ -1,0 +1,21 @@
+version "{build}
+
+branches:
+  only:
+    - master
+
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      GENERATOR: "Visual Studio 16 2019"
+      CONFIG: Release
+      ARCH_ARG: "-A x64"
+
+build_script:
+  - cmake -S . -B build -G "%GENERATOR%"
+  - cmake --build build --target install --config "%CONFIG%"
+
+test_script:
+  - ps: cd install
+  - hello_world.exe
+
