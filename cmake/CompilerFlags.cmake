@@ -182,7 +182,14 @@ target_compile_options(cflags_default_errors INTERFACE ${project_errors})
 add_library(cflags_default_compile_options INTERFACE)
 add_library(cflags::default_compile_options ALIAS cflags_default_compile_options)
 
-# TODO: Define Visual Studio options
+set(msvc_defines
+	# Do not warn on "unsafe" C functions
+	_CRT_SECURE_NO_WARNINGS
+	# Remove min/max macros from Windef.h (and Windows.h)
+	NOMINMAX
+	# Do not include unnecessary WinAPI headers
+	WIN32_LEAN_AND_MEAN
+)
 
 set(clang_gcc_compile_options
 	-fno-omit-frame-pointer
@@ -190,6 +197,8 @@ set(clang_gcc_compile_options
 	$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-fvisibility-inlines-hidden>
 )
 
-if(compiler_id STREQUAL "GNU" OR (compiler_id MATCHES ".*Clang" AND NOT simulate_id STREQUAL "MSVC"))
+if(MSVC)
+	target_compile_definitions(cflags_default_compile_options INTERFACE ${msvc_defines})
+elseif(compiler_id STREQUAL "GNU" OR (compiler_id MATCHES ".*Clang" AND NOT simulate_id STREQUAL "MSVC"))
 	target_compile_options(cflags_default_compile_options INTERFACE ${clang_gcc_compile_options})
 endif()
