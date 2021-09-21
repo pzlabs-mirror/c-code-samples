@@ -120,7 +120,7 @@ set(gcc_warnings
 	# Warn about logical operations being used where bitwise were probably wanted
 	-Wlogical-op
 	# Warn if you perform a cast to the same type. Disabled for now
-#	-Wuseless-cast
+#	$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-Wuseless-cast>
 	# Warn if a goto statement or a switch statement jumps forward across the initialization of
 	# a variable
 	$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,C>:-Wjump-misses-init>

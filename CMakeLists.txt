@@ -5,9 +5,11 @@ project(c_code_samples
 	LANGUAGES C
 )
 
-# Tell the compiler to run in C17 mode (ISO/IEC 9899:2018). Turn the compiler extensions off
-# (i.e. it forces -std=c17 instead of -std=gnu17 on gcc and clang)
+# Tell the compiler to run in C17 mode (ISO/IEC 9899:2018).
 set(CMAKE_C_STANDARD 17)
+# This should be set to TRUE to fail if the compiler doesn't support C17
+set(CMAKE_C_STANDARD_REQUIRED FALSE)
+# Turn the compiler extensions off (i.e. it forces -std=c17 instead of -std=gnu17 on gcc and clang)
 set(CMAKE_C_EXTENSIONS FALSE)
 
 # Use folders for nice tree in Visual Studio and XCode
@@ -26,7 +28,7 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
 endif()
 
 # Under Linux, the mathematical functions from <math.h> are defined in a separate library libm.
-# Link to this target if you use <math.h>
+# You can link to this target if you use <math.h>
 
 add_library(stdlib_math INTERFACE)
 add_library(stdlib::math ALIAS stdlib_math)
@@ -62,13 +64,31 @@ target_link_libraries(swap_vars_b PRIVATE flags::flags)
 add_executable(swap_vars_c src/swap_vars/swap_c.c)
 target_link_libraries(swap_vars_c PRIVATE flags::flags)
 
+add_executable(fizzbuzz_naive src/fizzbuzz/fizzbuzz_naive.c)
+target_link_libraries(fizzbuzz_naive PRIVATE flags::flags)
+
+add_executable(fizzbuzz_naive_vars src/fizzbuzz/fizzbuzz_naive_vars.c)
+target_link_libraries(fizzbuzz_naive_vars PRIVATE flags::flags)
+
+add_executable(fizzbuzz_with_flag src/fizzbuzz/fizzbuzz_with_flag.c)
+target_link_libraries(fizzbuzz_with_flag PRIVATE flags::flags)
+
+add_executable(fizzbuzz_bitmask_switch src/fizzbuzz/fizzbuzz_bitmask_switch.c)
+target_link_libraries(fizzbuzz_bitmask_switch PRIVATE flags::flags)
+
+add_executable(fizzbuzz_counters src/fizzbuzz/fizzbuzz_counters.c)
+target_link_libraries(fizzbuzz_counters PRIVATE flags::flags)
+
+add_executable(fizzbuzz_two_branches src/fizzbuzz/fizzbuzz_two_branches.c)
+target_link_libraries(fizzbuzz_two_branches PRIVATE flags::flags)
+
 add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
 add_executable(lab1_2 src/lab1/lab1_2.c)
 target_link_libraries(lab1_2 PRIVATE flags::flags)
 
-# Install every executable into default install prefix. To run installation step,
+# Install every executable into default install prefix. To run installation step, one should
 # execute `cmake --build ${YOUR_BUILD_DIRECTORY} --target install`
 install(
 	TARGETS
@@ -76,6 +96,12 @@ install(
 		swap_vars_a
 		swap_vars_b
 		swap_vars_c
+		fizzbuzz_naive
+		fizzbuzz_naive_vars
+		fizzbuzz_with_flag
+		fizzbuzz_bitmask_switch
+		fizzbuzz_counters
+		fizzbuzz_two_branches
 		lab1_1
 		lab1_2
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
