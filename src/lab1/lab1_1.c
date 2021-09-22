@@ -28,6 +28,6 @@ int main(void)
 	{
 		const double a = 9.8;
 		const double z = sqrt(x) / (1. + pow(a, 3.2)) + pow(acos(y), 2.) / 2.;
-		printf("z = %lf\n", z);
+		printf("z = %f\n", z);
 	}
 }
