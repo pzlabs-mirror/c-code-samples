@@ -5,6 +5,8 @@ project(c_code_samples
 	LANGUAGES C
 )
 
+option(C_CODE_SAMPLES_WITH_EXTRAS "Build extra targets" OFF)
+
 # Tell the compiler to run in C17 mode (ISO/IEC 9899:2018).
 set(CMAKE_C_STANDARD 17)
 # This should be set to TRUE to fail if the compiler doesn't support C17
