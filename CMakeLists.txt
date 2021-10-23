@@ -110,3 +110,18 @@ install(
 	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 )
+
+# Extras
+
+if(C_CODE_SAMPLES_WITH_EXTRAS)
+	add_executable(test1 src/extra/test1/test1.c)
+	target_link_libraries(test1 PRIVATE flags::flags)
+
+	install(
+		TARGETS
+			test1
+		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+		LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+		ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+	)
+endif()
