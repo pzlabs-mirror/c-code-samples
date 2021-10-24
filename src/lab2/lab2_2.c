@@ -44,14 +44,14 @@ int main(void)
 
 	printf("%12s %11s %11s %11s\n", "x", "cos(x)^2", "taylor", "delta");
 	unsigned long num_iters = (unsigned long)((range_end - range_begin) / step) + 1ul;
-	if (fabs(range_begin + step * (num_iters - 1ul) - range_end) > 1e-6f)
+	if (fabs(range_begin + step * (double)(num_iters - 1ul) - range_end) > 1e-6)
 	{
 		// Make sure that that range_end is always included
 		++num_iters;
 	}
 	for (unsigned long iter = 0ul; iter < num_iters; ++iter)
 	{
-		const double x = iter == num_iters - 1ul ? range_end : range_begin + step * iter;
+		const double x = iter == num_iters - 1ul ? range_end : range_begin + step * (double)iter;
 		const double cos2_val = cos2(x);
 		const double taylor_val = cos2_taylor(x, eps);
 		const double delta = fabs(cos2_val - taylor_val);

@@ -62,6 +62,8 @@ int main(void)
 
 	remove_words_starting_with(sentence, prefix);
 	printf("Sentence without words starting with \"%s\":\n%s\n", prefix, sentence);
+
+	return EXIT_SUCCESS;
 }
 
 char* skip_whitespace(char* begin)

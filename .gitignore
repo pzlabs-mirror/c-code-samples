@@ -63,4 +63,5 @@ CMakeSettings.json
 # Misc
 **/.comments/
 /.storage/
+/data/
 
