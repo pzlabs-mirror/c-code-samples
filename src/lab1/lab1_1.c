@@ -10,8 +10,8 @@
 
 int main(void)
 {
-	double x;
-	double y;
+	double x = 3.;
+	double y = 0.605;
 
 	printf("Enter x, y: ");
 	scanf("%lf %lf", &x, &y);

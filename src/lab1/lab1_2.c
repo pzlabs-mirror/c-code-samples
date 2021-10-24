@@ -8,14 +8,14 @@
 
 int main(void)
 {
-	int num;
+	int num = 12345;
 
 	printf("Please enter a five-digit number: ");
 	scanf("%d", &num);
 
 	if (num < 10000 || num > 99999)
 	{
-		printf("Invalid number!\n");
+		printf("Error: Invalid number!\n");
 	}
 	else
 	{
@@ -52,6 +52,6 @@ int main(void)
 			min_index = 5;
 		}
 
-		printf("The minimum digit has value %d and index %d\n", min_digit, min_index);
+		printf("The smallest digit has value %d and index %d\n", min_digit, min_index);
 	}
 }
