@@ -90,6 +90,8 @@ target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 add_executable(lab1_2 src/lab1/lab1_2.c)
 target_link_libraries(lab1_2 PRIVATE flags::flags)
 
+add_executable(lab2_2 src/lab2/lab2_2.c)
+target_link_libraries(lab2_2 PRIVATE flags::flags stdlib::math)
 # Install every executable into default install prefix. To run installation step, one should
 # execute `cmake --build ${YOUR_BUILD_DIRECTORY} --target install`
 install(
@@ -106,6 +108,7 @@ install(
 		fizzbuzz_two_branches
 		lab1_1
 		lab1_2
+		lab2_2
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
