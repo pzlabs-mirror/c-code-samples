@@ -79,7 +79,7 @@ char* skip_whitespace(char* begin)
 char* find_word_end(char* word_begin)
 {
 	char* word_end = word_begin;
-	while (*word_end && !isspace(*word_end) && !ispunct(*word_end))
+	while (*word_end && !isspace(*word_end) && *word_end != '.')
 	{
 		++word_end;
 	}
