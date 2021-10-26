@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <limits.h>
 
 double cos2(double x);
 double cos2_taylor(double x, double eps);
