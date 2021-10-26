@@ -63,8 +63,12 @@ int main(void)
 				smallest_idx = select_idx;
 			}
 		}
-		swap(&row_ranges[commit_idx], &row_ranges[smallest_idx]);
-		swap_vectors(matrix[commit_idx], matrix[smallest_idx], num_cols);
+
+		if (commit_idx != smallest_idx)
+		{
+			swap(&row_ranges[commit_idx], &row_ranges[smallest_idx]);
+			swap_vectors(matrix[commit_idx], matrix[smallest_idx], num_cols);
+		}
 	}
 
 	printf("\nAfter sorting:\n");
@@ -107,7 +111,7 @@ void vector_min_max(const double* vec, int size, const double** min, const doubl
 		{
 			current_min = elem;
 		}
-		if (*elem > *current_max)
+		else if (*elem > *current_max)
 		{
 			current_max = elem;
 		}

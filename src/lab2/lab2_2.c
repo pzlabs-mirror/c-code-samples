@@ -44,7 +44,7 @@ int main(void)
 
 	printf("%12s %11s %11s %11s\n", "x", "cos(x)^2", "taylor", "delta");
 	unsigned long num_iters = (unsigned long)((range_end - range_begin) / step) + 1ul;
-	if (fabs(range_begin + step * (double)(num_iters - 1ul) - range_end) > 1e-6)
+	if (fabs(range_begin + step * (double)(num_iters - 1ul) - range_end) > 1e-3 * step)
 	{
 		// Make sure that that range_end is always included
 		++num_iters;
