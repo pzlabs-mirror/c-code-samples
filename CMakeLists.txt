@@ -51,6 +51,7 @@ target_link_libraries(flags INTERFACE
 	cflags::default_errors
 	cflags::default_compile_options
 )
+target_include_directories(flags INTERFACE src)
 
 # Define executables with the actual example code
 
@@ -87,6 +88,16 @@ target_link_libraries(fizzbuzz_two_branches PRIVATE flags::flags)
 add_executable(ascii_canvas src/canvas/ascii_canvas.c)
 target_link_libraries(ascii_canvas PRIVATE flags::flags stdlib::math)
 
+add_executable(array_search
+	src/search/search_common.h
+	src/search/linear_search.h
+	src/search/linear_search.c
+	src/search/binary_search.h
+	src/search/binary_search.c
+	src/search/test_array_search.c
+)
+target_link_libraries(array_search PRIVATE flags::flags)
+
 add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
@@ -117,6 +128,7 @@ install(
 		fizzbuzz_counters
 		fizzbuzz_two_branches
 		ascii_canvas
+		array_search
 		lab1_1
 		lab1_2
 		lab2_2

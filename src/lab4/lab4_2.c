@@ -92,13 +92,13 @@ char* find_word_starting_with(char* sentence, const char* prefix, const size_t p
 	{
 		while (*current)
 		{
-			// Find the next prefix occurance
+			// Find the next prefix occurrence
 			char* const word_begin = strstr(current, prefix);
 			if (!word_begin)
 			{
 				break;
 			}
-			// Check whether the occurance is at the beginning of a word
+			// Check whether the occurrence is at the beginning of a word
 			if (word_begin == sentence || isspace(*(word_begin - 1)))
 			{
 				return word_begin;
