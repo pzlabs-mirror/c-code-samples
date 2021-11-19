@@ -101,6 +101,9 @@ target_link_libraries(array_search PRIVATE flags::flags)
 add_executable(variadic_fold src/variadic_fold/variadic_fold.c)
 target_link_libraries(variadic_fold PRIVATE flags::flags)
 
+add_executable(strview src/strview/strview.h src/strview/strview.c src/strview/test_strview.c)
+target_link_libraries(strview PRIVATE flags::flags)
+
 add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
@@ -133,6 +136,7 @@ install(
 		ascii_canvas
 		array_search
 		variadic_fold
+		strview
 		lab1_1
 		lab1_2
 		lab2_2

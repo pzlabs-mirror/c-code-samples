@@ -159,6 +159,8 @@ set(clang_gcc_errors
 #	-Werror=switch
 	# Error when a switch case falls through. Use [[fallthrough]] to fix
 #	-Werror=implicit-fallthrough
+	# Error on implicit function declaration
+	-Werror=implicit-function-declaration
 )
 
 set(clang_errors ${clang_gcc_errors})
