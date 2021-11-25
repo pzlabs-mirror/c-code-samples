@@ -51,10 +51,12 @@ int main(int argc, char** argv)
 			printf("Sum: %g\n", fold_count(&add, 0, 4, nums[0], nums[1], nums[2], nums[3]));
 			break;
 		case 2:
-			printf("Product: %g\n", fold_sentinel(&multiply, 1, nums[0], nums[1], nums[2], nums[3], nan("")));
+			printf("Product: %g\n", fold_sentinel(&multiply, 1, nums[0], nums[1], nums[2],
+				nums[3], nan("")));
 			break;
 		case 3:
-			printf("Max: %g\n", fold_ptr(&max, -(double)INFINITY, &nums[0], &nums[1], &nums[2], &nums[3], NULL));
+			printf("Max: %g\n", fold_ptr(&max, -(double)INFINITY, &nums[0], &nums[1], &nums[2],
+				&nums[3], (const double*)NULL));
 			break;
 		default:
 			fputs("Error: Argument out of range\n", stderr);
@@ -116,8 +118,8 @@ double fold_ptr(double (*operation)(double, double), double init, ...)
 	va_start(args, init);
 
 	double accum = init;
-	double* value = NULL;
-	while ((value = va_arg(args, double*)) != NULL)
+	const double* value = NULL;
+	while ((value = va_arg(args, const double*)) != NULL)
 	{
 		accum = operation(accum, *value);
 	}
