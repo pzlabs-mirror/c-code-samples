@@ -42,6 +42,9 @@ endif()
 # Enable targets for *default* compilation flags
 include(cmake/CompilerFlags.cmake)
 
+# Enable target and options for sanitizer flags
+include(cmake/Sanitizers.cmake)
+
 # Define a single target with unified compiler flags
 add_library(flags INTERFACE)
 add_library(flags::flags ALIAS flags)
@@ -50,6 +53,7 @@ target_link_libraries(flags INTERFACE
 	cflags::default_warnings
 	cflags::default_errors
 	cflags::default_compile_options
+	cflags::sanitizer_options
 )
 target_include_directories(flags INTERFACE src)
 
