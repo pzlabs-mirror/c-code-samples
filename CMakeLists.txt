@@ -116,6 +116,14 @@ add_executable(stack_machine
 	src/stack_machine/test_stack_machine.c
 )
 target_link_libraries(stack_machine PRIVATE flags::flags stdlib::math)
+
+add_executable(slist
+	src/slist/slist.h
+	src/slist/slist.c
+	src/slist/test_slist.c
+)
+target_link_libraries(slist PRIVATE flags::flags)
+
 add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
@@ -150,6 +158,7 @@ install(
 		variadic_fold
 		strview
 		stack_machine
+		slist
 		lab1_1
 		lab1_2
 		lab2_2
