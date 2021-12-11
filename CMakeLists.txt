@@ -124,6 +124,13 @@ add_executable(slist
 )
 target_link_libraries(slist PRIVATE flags::flags)
 
+add_executable(dlist
+	src/dlist/dlist.h
+	src/dlist/dlist.c
+	src/dlist/test_dlist.c
+)
+target_link_libraries(dlist PRIVATE flags::flags)
+
 add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
@@ -159,6 +166,7 @@ install(
 		strview
 		stack_machine
 		slist
+		dlist
 		lab1_1
 		lab1_2
 		lab2_2
