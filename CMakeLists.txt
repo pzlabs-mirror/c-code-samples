@@ -108,6 +108,14 @@ target_link_libraries(variadic_fold PRIVATE flags::flags stdlib::math)
 add_executable(strview src/strview/strview.h src/strview/strview.c src/strview/test_strview.c)
 target_link_libraries(strview PRIVATE flags::flags)
 
+add_executable(stack_machine
+	src/stack_machine/stack.h
+	src/stack_machine/stack.c
+	src/stack_machine/stack_machine.h
+	src/stack_machine/stack_machine.c
+	src/stack_machine/test_stack_machine.c
+)
+target_link_libraries(stack_machine PRIVATE flags::flags stdlib::math)
 add_executable(lab1_1 src/lab1/lab1_1.c)
 target_link_libraries(lab1_1 PRIVATE flags::flags stdlib::math)
 
@@ -141,6 +149,7 @@ install(
 		array_search
 		variadic_fold
 		strview
+		stack_machine
 		lab1_1
 		lab1_2
 		lab2_2
