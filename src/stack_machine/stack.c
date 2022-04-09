@@ -13,7 +13,7 @@ extern inline stack_item* stack_top(const stack* stack);
 
 static bool stack_ensure_capacity(stack* self, size_t capacity);
 
-static inline size_t maxsz(size_t a, size_t b)
+static size_t maxsz(size_t a, size_t b)
 {
 	return a > b ? a : b;
 }

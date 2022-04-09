@@ -12,8 +12,8 @@
 
 /// Bitmasks for each divisor. We can only use `#define`s since `const int` variables in C
 /// aren't constant expressions (but they are in C++, Zig, ...)
-#define DIVISIBLE_BY_3 1u
-#define DIVISIBLE_BY_5 (1u << 1)
+#define FLAG_DIVISIBLE_BY_3 1u
+#define FLAG_DIVISIBLE_BY_5 (1u << 1)
 
 int main(void)
 {
@@ -23,18 +23,18 @@ int main(void)
 	for (int num = min_num; num <= max_num; ++num)
 	{
 		const unsigned bitset
-			= (unsigned)(num % 3 == 0) * DIVISIBLE_BY_3
-			| (unsigned)(num % 5 == 0) * DIVISIBLE_BY_5;
+			= (unsigned)(num % 3 == 0) * FLAG_DIVISIBLE_BY_3
+			| (unsigned)(num % 5 == 0) * FLAG_DIVISIBLE_BY_5;
 
 		switch (bitset)
 		{
-			case DIVISIBLE_BY_3:
+			case FLAG_DIVISIBLE_BY_3:
 				printf("Fizz\n");
 				break;
-			case DIVISIBLE_BY_5:
+			case FLAG_DIVISIBLE_BY_5:
 				printf("Buzz\n");
 				break;
-			case DIVISIBLE_BY_3 | DIVISIBLE_BY_5:
+			case FLAG_DIVISIBLE_BY_3 | FLAG_DIVISIBLE_BY_5:
 				printf("FizzBuzz\n");
 				break;
 			default:

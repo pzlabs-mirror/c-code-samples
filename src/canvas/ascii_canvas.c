@@ -39,7 +39,7 @@ int main(void)
 	draw_my_image(canvas);
 	canvas_print(canvas);
 
-	const char filename[] = "data/img.ppm";
+	const char filename[] = "img.ppm";
 	FILE* file = fopen(filename, "wb");
 	if (!file)
 	{
@@ -104,9 +104,12 @@ char color_to_char(uint8_t color)
 
 void canvas_fill(canvas_t canvas, uint8_t c)
 {
-	for (uint8_t *p = &canvas[0][0]; p != &canvas[0][0] + CANVAS_HEIGHT * CANVAS_WIDTH; ++p)
+	for (int y = 0; y < CANVAS_HEIGHT; ++y)
 	{
-		*p = c;
+		for (int x = 0; x < CANVAS_WIDTH; ++x)
+		{
+			canvas[y][x] = c;
+		}
 	}
 }
 
@@ -237,9 +240,11 @@ void draw_my_image(canvas_t canvas)
 	{
 		const float ratio = ((float)(i + 1)) / ((float)num_stripes);
 		const int next_stripe_y = (int)floorf(ratio * CANVAS_HEIGHT);
-		canvas_draw_rect(canvas, 0, CANVAS_WIDTH - 1, prev_stripe_y, next_stripe_y - 1, (uint8_t)(ratio * 255));
+		canvas_draw_rect(canvas, 0, CANVAS_WIDTH - 1, prev_stripe_y, next_stripe_y - 1,
+			(uint8_t)(ratio * 255));
 		prev_stripe_y = next_stripe_y;
 	}
+
 	canvas_draw_circle(canvas, 20, 20, 10.7f, 50);
 	canvas_draw_point(canvas, 20, 20, 255);
 
