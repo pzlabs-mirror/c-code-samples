@@ -16,7 +16,7 @@ typedef struct dnode
 
 dnode* dnode_new(dlist_value value);
 
-/// @brief Soubly linked list
+/// @brief Doubly linked list
 typedef struct dlist
 {
 	dnode* head;

@@ -3,14 +3,27 @@
 A collection of simple code samples and examples for projects in C.
 
 ## Contents
-  * `hello_world`
-  * `swap`
-  * `lab1`
-  * More samples coming soon.
-  
+  * hello world;
+  * swapping variables (3 solutions);
+  * fizzbuzz (6 solutions);
+  * drawing on a 2D canvas with ASCII and PPM6 output;
+  * linear and binary search;
+  * a left fold implementation using variadic arguments and pointers to functions (3 solutions);
+  * a C++ inspired custom string view type;
+  * a simple programmable stack machine;
+  * a singly linked list implementation;
+  * a doubly linked list implementation;
+  * lab1 examples (task 1, task 2);
+  * lab2 example (task 2);
+  * lab3 example (task 2);
+  * lab4 example (task 2);
+
+### Extras
+  * test 1 helper app;
+
 ## Building
 
-> :information_source: This instruction describes how to run CMake commands manually. You can simply open
+> :information\_source: This instruction describes how to run CMake commands manually. You can simply open
 the `CMakeLists.txt` in any IDE that supports CMake, including but not limited to Qt Creator,
 Visual Studio, KDevelop, and CLion.
 
@@ -24,11 +37,11 @@ Visual Studio, KDevelop, and CLion.
 3. Run the configuration step in a build directory. Change the name of this directory if needed.
 Multiple build directories are supported and encouraged in case of multiple configurations.
     ```bash
-    $ cmake -B build 
+    $ cmake -B build
     ```
 4. Build every target.
     ```bash
-    $ cmake --build build 
+    $ cmake --build build
     ```
 
     To build a specific executable, run `cmake --build ${MY_BUILD_DIR} --target ${MY_TARGET}`:
@@ -58,7 +71,7 @@ After being built, the binaries can be found in the build directory:
 ```bash
 $ build/hello_world
 ```
-You can also run installed programs from the installation folder:
+You can also run the optionally installed executables from the installation folder:
 ```bash
 $ install/bin/hello_world
 ```

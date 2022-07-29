@@ -30,8 +30,7 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
 endif()
 
 # Under Linux, the mathematical functions from <math.h> are defined in a separate library libm.
-# You can link to this target if you use <math.h>
-
+# You need to link to this target if you use <math.h>
 add_library(stdlib_math INTERFACE)
 add_library(stdlib::math ALIAS stdlib_math)
 
