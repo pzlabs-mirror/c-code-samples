@@ -5,6 +5,11 @@
 #include <string.h>
 #include <stdio.h>
 
+// Remove annoying macros defined by Microsoft in <stdlib.h> for some reason.
+// Unfortunately, NOMINMAX doesn't protect against this "feature".
+#undef max
+#undef min
+
 double add(double a, double b);
 double multiply(double a, double b);
 double max(double a, double b);
