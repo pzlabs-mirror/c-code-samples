@@ -1,5 +1,7 @@
 # C Code Samples
 
+[![build](https://github.com/pzlabs-mirror/c-code-samples/actions/workflows/test-all.yml/badge.svg)](https://github.com/pzlabs-mirror/c-code-samples/actions/workflows/test-all.yml)
+
 A collection of simple code samples and examples for projects in C.
 
 ## Contents
@@ -34,42 +36,45 @@ Visual Studio, KDevelop, and CLion.
     $ git clone https://gitlab.com/pzlabs/c-code-samples.git
     $ cd c-code-samples
     ```
-3. Run the configuration step in a build directory. Change the name of this directory if needed.
+3. Run the configuration stage in a build directory. Change the name of this directory if needed.
 Multiple build directories are supported and encouraged in case of multiple configurations.
     ```bash
-    $ cmake -B build
+    $ mkdir build-reldeb
+    $ cmake -B build-reldeb -D CMAKE_BUILD_TYPE=RelWithDebInfo
     ```
+    The following [configurations](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)
+    specified by the `CMAKE_BUILD_TYPE` option are supported by default: `Debug`, `MinSizeRel`, `RelWithDebInfo`, `Release`.
 4. Build every target.
     ```bash
-    $ cmake --build build
+    $ cmake --build build-reldeb
     ```
 
     To build a specific executable, run `cmake --build ${MY_BUILD_DIR} --target ${MY_TARGET}`:
     ```bash
-    $ cmake --build build --target hello_world
+    $ cmake --build build-reldeb --target hello_world
     ```
 
 5. You can cleanup binaries in the build directory by running the `clean` target:
     ```bash
-    $ cmake --build build --target clean
+    $ cmake --build build-reldeb --target clean
     ```
 
 6. (Optionally) Install binaries.
     ```bash
-    $ cmake --build build --target install
+    $ cmake --build build-reldeb --target install
     ```
     CMake will copy all the executable from the build directory to the install path.
     By default, the install directory is called `install` and resides in the project root.
     This behavior can be changed by specifying `CMAKE_INSTALL_PREFIX` explicitly during configuration:
     ```bash
-    $ cmake -B build -D CMAKE_INSTALL_PREFIX=${MY_CUSTOM_INSTALL_PREFIX}
+    $ cmake -B build-reldeb -D CMAKE_INSTALL_PREFIX=${MY_CUSTOM_INSTALL_PREFIX}
     ```
 
 ## Running
 
 After being built, the binaries can be found in the build directory:
 ```bash
-$ build/hello_world
+$ build-reldeb/hello_world
 ```
 You can also run the optionally installed executables from the installation folder:
 ```bash
