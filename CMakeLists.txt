@@ -23,7 +23,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 # Change the default install prefix to project_dir/install
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
-	AND "${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}"
+	AND CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR
 )
 	set(CMAKE_INSTALL_PREFIX "${PROJECT_SOURCE_DIR}/install" CACHE PATH "Install root path" FORCE)
 	message(STATUS "Install prefix has been set to '${CMAKE_INSTALL_PREFIX}'")
@@ -145,48 +145,64 @@ target_link_libraries(lab3_2 PRIVATE flags::flags)
 add_executable(lab4_2 src/lab4/lab4_2.c)
 target_link_libraries(lab4_2 PRIVATE flags::flags)
 
-# Install every executable into default install prefix. To run installation step, one should
-# execute `cmake --build ${YOUR_BUILD_DIRECTORY} --target install`
-install(
-	TARGETS
-		hello_world
-		swap_vars_a
-		swap_vars_b
-		swap_vars_c
-		fizzbuzz_naive
-		fizzbuzz_naive_vars
-		fizzbuzz_with_flag
-		fizzbuzz_bitmask_switch
-		fizzbuzz_counters
-		fizzbuzz_two_branches
-		ascii_canvas
-		array_search
-		variadic_fold
-		strview
-		stack_machine
-		slist
-		dlist
-		lab1_1
-		lab1_2
-		lab2_2
-		lab3_2
-		lab4_2
-	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+set(c_samples_all_targets
+	hello_world
+	swap_vars_a
+	swap_vars_b
+	swap_vars_c
+	fizzbuzz_naive
+	fizzbuzz_naive_vars
+	fizzbuzz_with_flag
+	fizzbuzz_bitmask_switch
+	fizzbuzz_counters
+	fizzbuzz_two_branches
+	ascii_canvas
+	array_search
+	variadic_fold
+	strview
+	stack_machine
+	slist
+	dlist
+	lab1_1
+	lab1_2
+	lab2_2
+	lab3_2
+	lab4_2
 )
 
 # Extras
 
 if(C_CODE_SAMPLES_WITH_EXTRAS)
-	add_executable(test1 src/extra/test1/test1.c)
-	target_link_libraries(test1 PRIVATE flags::flags)
+	add_executable(extras_test1 src/extra/test1/test1.c)
+	target_link_libraries(extras_test1 PRIVATE flags::flags)
 
-	install(
-		TARGETS
-			test1
-		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-		LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-		ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-	)
+	list(APPEND c_samples_all_targets extras_test1)
+endif()
+
+# Install every executable into default install prefix. To run the installation stage, one should
+# execute `cmake --build ${YOUR_BUILD_DIRECTORY} --target install`
+install(TARGETS ${c_samples_all_targets})
+
+# Tests
+# This section is primarily intended for CI builds.
+# To run the tests, first enable testing during configuration phase:
+#  ```cmake
+#  cmake -B ${YOUR_BUILD_DIRECTORY} -D BUILD_TESTING=ON`
+#  ```
+# Then build as usual and run the tests using CTest:
+#   ```cmake
+#   cmake --build ${YOUR_BUILD_RECTORY} ${YOUR_CONFIG_OPTIONS}
+#   ctest --test-dir ${YOUR_BUILD_DIRECTORY}
+#   ```
+
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+	# include(CTest) provides BUILD_TESTING as a CMake option.
+	# Disable testing by default
+	option(BUILD_TESTING "" OFF)
+	include(CTest)
+endif()
+
+if(BUILD_TESTING)
+	message(STATUS "C Code Samples: Unit tests enabled")
+	add_subdirectory(test)
 endif()

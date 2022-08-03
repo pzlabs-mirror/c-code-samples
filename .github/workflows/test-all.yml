@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: ${{matrix.os}}-${{github.workflow}}
+    name: ${{matrix.os}}-${{github.workflow}}-${{matrix.build_type}}
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: false
@@ -22,7 +22,11 @@ jobs:
         with:
           msbuild-architecture: x64
       - name: Configure
-        run: cmake -B ${{github.workspace}}/build -D CMAKE_BUILD_TYPE=${{matrix.build_type}} -D C_CODE_SAMPLES_WITH_EXTRAS=ON
+        run: cmake -B ${{github.workspace}}/build -D CMAKE_BUILD_TYPE=${{matrix.build_type}} -D BUILD_TESTING=ON -D C_CODE_SAMPLES_WITH_EXTRAS=ON
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
+      - name: Test
+        run: ctest --test-dir ${{github.workspace}}/build -C ${{matrix.build_type}}
+      - name: Install
+        run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --target=install
 
