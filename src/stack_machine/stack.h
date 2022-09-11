@@ -37,7 +37,6 @@ inline bool stack_is_empty(const stack* self)
 	return self->size == 0;
 }
 
-
 inline stack_item* stack_top(const stack* self)
 {
 	assert(self);
@@ -47,8 +46,8 @@ inline stack_item* stack_top(const stack* self)
 	return &self->data[self->size - 1];
 }
 
-stack_item* stack_push(stack* stack, stack_item item);
-stack_item stack_pop(stack* stack);
+stack_item* stack_push(stack* self, stack_item item);
+stack_item stack_pop(stack* self);
 
 void stack_clear(stack* self);
 

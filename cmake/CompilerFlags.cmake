@@ -201,6 +201,8 @@ set(clang_gcc_compile_options
 
 if(MSVC)
 	target_compile_definitions(cflags_default_compile_options INTERFACE ${msvc_defines})
-elseif(compiler_id STREQUAL "GNU" OR (compiler_id MATCHES ".*Clang" AND NOT simulate_id STREQUAL "MSVC"))
+elseif(compiler_id STREQUAL "GNU"
+	OR (compiler_id MATCHES ".*Clang" AND NOT simulate_id STREQUAL "MSVC")
+)
 	target_compile_options(cflags_default_compile_options INTERFACE ${clang_gcc_compile_options})
 endif()

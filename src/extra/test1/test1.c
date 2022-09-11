@@ -259,9 +259,9 @@ void dec_to_oct(uint32_t dec, oct_num* oct)
 {
 	init_oct_num(oct);
 	uint32_t remained = dec;
-	for (unsigned idx = 0; idx < OCT_NUM_LEN && remained > 0u; ++idx)
+	for (unsigned idx = 0; idx < OCT_NUM_LEN && remained != 0u; ++idx)
 	{
-		oct->digits[OCT_NUM_LEN - idx - 1] = '0' + remained % 8;
+		oct->digits[OCT_NUM_LEN - idx - 1] = '0' + (char)(remained % 8);
 		remained /= 8;
 	}
 }
