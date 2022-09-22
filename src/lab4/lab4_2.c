@@ -17,7 +17,7 @@
 
 char* skip_whitespace(char* begin);
 char* find_word_end(char* word_begin);
-char* find_word_starting_with(char* sentence, const char* prefix, const size_t prefix_len);
+char* find_word_starting_with(char* sentence, const char* prefix, size_t prefix_len);
 void remove_words_starting_with(char* sentence, const char* prefix);
 
 int main(void)
@@ -45,7 +45,9 @@ int main(void)
 		return EXIT_FAILURE;
 	}
 
-	// scanf_s is also de facto non-portable. As a replacement we manually construct
+	// fgets reads everything except newline characters, so it's not suitable for parsing a single
+	// word of prefix (unless we manually split the string buffer after the fgets call).
+	// scanf_s is de facto non-portable. As a replacement we manually construct
 	// the format string for scanf in the form of "%<buffer_length>s".
 	// NOTE: Unlike fgets, scanf requires the buffer to have room for at least width+1 characters
 	char prefix_fmt_str[16] = {0};
@@ -85,7 +87,7 @@ char* find_word_end(char* word_begin)
 	return word_end;
 }
 
-char* find_word_starting_with(char* sentence, const char* prefix, const size_t prefix_len)
+char* find_word_starting_with(char* sentence, const char* prefix, size_t prefix_len)
 {
 	char* current = sentence;
 	if (prefix_len > 0)
@@ -103,7 +105,7 @@ char* find_word_starting_with(char* sentence, const char* prefix, const size_t p
 			{
 				return word_begin;
 			}
-			// It is not a prefix. Keep searhing
+			// It is not a prefix. Keep looking
 			current = word_begin + prefix_len;
 		}
 	}
