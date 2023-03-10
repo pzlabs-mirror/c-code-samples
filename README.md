@@ -1,5 +1,6 @@
 # C Code Samples
 
+
 [![build](https://github.com/pzlabs-mirror/c-code-samples/actions/workflows/test-all.yml/badge.svg)](https://github.com/pzlabs-mirror/c-code-samples/actions/workflows/test-all.yml)
 
 A collection of simple code samples and examples for projects in the C programming language.
@@ -39,35 +40,34 @@ Visual Studio, KDevelop, and CLion.
 3. Run the configuration stage in a build directory. Change the name of this directory if needed.
 Multiple build directories are supported and encouraged in case of multiple configurations.
     ```bash
-    $ mkdir build-reldeb
-    $ cmake -B build-reldeb -D CMAKE_BUILD_TYPE=RelWithDebInfo
+    $ cmake -B build-release -D CMAKE_BUILD_TYPE=Release
     ```
     The following [configurations](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)
     specified by the `CMAKE_BUILD_TYPE` option are supported by default: `Debug`, `MinSizeRel`, `RelWithDebInfo`, `Release`.
 4. Build every target.
     ```bash
-    $ cmake --build build-reldeb
+    $ cmake --build build-release
     ```
 
     To build a specific executable, run `cmake --build ${MY_BUILD_DIR} --target ${MY_TARGET}`:
     ```bash
-    $ cmake --build build-reldeb --target hello_world
+    $ cmake --build build-release --target hello_world
     ```
 
 5. You can cleanup binaries in the build directory by running the `clean` target:
     ```bash
-    $ cmake --build build-reldeb --target clean
+    $ cmake --build build-release --target clean
     ```
 
 6. (Optionally) Install binaries.
     ```bash
-    $ cmake --build build-reldeb --target install
+    $ cmake --build build-release --target install
     ```
     CMake will copy all the executable from the build directory to the install path.
     This project sets that the default install directory is called `install` and resides in the project root.
     This behavior can be changed by specifying `CMAKE_INSTALL_PREFIX` explicitly during configuration:
     ```bash
-    $ cmake -B build-reldeb -D CMAKE_INSTALL_PREFIX=${MY_CUSTOM_INSTALL_PREFIX}
+    $ cmake -B build-release -D CMAKE_INSTALL_PREFIX=${MY_CUSTOM_INSTALL_PREFIX}
     ```
 
 ## Running
