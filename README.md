@@ -2,31 +2,31 @@
 
 [![build](https://github.com/pzlabs-mirror/c-code-samples/actions/workflows/test-all.yml/badge.svg)](https://github.com/pzlabs-mirror/c-code-samples/actions/workflows/test-all.yml)
 
-A collection of simple code samples and examples for projects in C.
+A collection of simple code samples and examples for projects in the C programming language.
 
 ## Contents
-  * hello world;
-  * swapping variables (3 solutions);
-  * fizzbuzz (6 solutions);
-  * drawing on a 2D canvas with ASCII and PPM6 output;
-  * linear and binary search;
-  * a left fold implementation using variadic arguments and pointers to functions (3 solutions);
-  * a C++ inspired custom string view type;
-  * a simple programmable stack machine;
-  * a singly linked list implementation;
-  * a doubly linked list implementation;
-  * lab1 examples (task 1, task 2);
-  * lab2 example (task 2);
-  * lab3 example (task 2);
-  * lab4 example (task 2);
+  * "hello\_world": a Hello, World program
+  * "swap\_vars": swapping values of two variables (3 solutions)
+  * "fizzbuz": FizzBuzz (6 solutions)
+  * "canvas": drawing on a 2D canvas with ASCII and PPM6 output
+  * "search": linear and binary search implementations
+  * "variadic\_fold": a left fold implementation using variadic arguments and pointers to functions (3 solutions)
+  * "strview": a custom string view type inspired by C++'s `std::string_view`
+  * "stack\_machine": a simple programmable stack machine
+  * "slist": a singly linked list implementation
+  * "dlist": a doubly linked list implementation
+  * "lab1": lab1 examples (task 1, task 2)
+  * "lab2": lab2 example (task 2)
+  * "lab3": lab3 example (task 2)
+  * "lab4": lab4 example (task 2)
 
 ### Extras
-  * test 1 helper app;
+  * "extra/test1": test 1 helper app
 
 ## Building
 
-> :information\_source: This instruction describes how to run CMake commands manually. You can simply open
-the `CMakeLists.txt` in any IDE that supports CMake, including but not limited to Qt Creator,
+> :information_source: These instructions describe how to run CMake commands manually. You can simply open
+the `CMakeLists.txt` in any IDE that supports CMake, including (but not limited to Qt Creator,
 Visual Studio, KDevelop, and CLion.
 
 1. Install `git`, a `C` compiler, `CMake`, and a build system available as a `CMake` generator
@@ -64,7 +64,7 @@ Multiple build directories are supported and encouraged in case of multiple conf
     $ cmake --build build-reldeb --target install
     ```
     CMake will copy all the executable from the build directory to the install path.
-    By default, the install directory is called `install` and resides in the project root.
+    This project sets that the default install directory is called `install` and resides in the project root.
     This behavior can be changed by specifying `CMAKE_INSTALL_PREFIX` explicitly during configuration:
     ```bash
     $ cmake -B build-reldeb -D CMAKE_INSTALL_PREFIX=${MY_CUSTOM_INSTALL_PREFIX}
